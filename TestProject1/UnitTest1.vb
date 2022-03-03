@@ -38,11 +38,8 @@ Namespace TestProject1
             Master.Master()
             Dim ConsoleMaster As New MasterMind.ConsoleMaster(Master)
             ConsoleMaster.arr = {Master.zahl(0) - 1, Master.zahl(1) - 1, Master.zahl(2) - 1, Master.zahl(3) - 1, Master.zahl(4) - 1}
-            Dim Writer As IO.StringWriter = New IO.StringWriter
-            Console.SetOut(Writer)
-            ConsoleMaster.printErg(0)
-            Dim eingaben() = Split(Writer.ToString)
-            Assert.AreEqual(Convert.ToInt32(eingaben(3)), 0)
+            Dim Fout() As Integer = ConsoleMaster.printErg(0)
+            Assert.AreEqual(Fout(0), 0)
         End Sub
 
         <Test>
@@ -51,11 +48,8 @@ Namespace TestProject1
             Master.Master()
             Dim ConsoleMaster As New MasterMind.ConsoleMaster(Master)
             ConsoleMaster.arr = {Master.zahl(0), Master.zahl(1), Master.zahl(2), Master.zahl(3), Master.zahl(4)}
-            Dim Writer As IO.StringWriter = New IO.StringWriter
-            Console.SetOut(Writer)
-            ConsoleMaster.printErg(0)
-            Dim eingaben() = Split(Writer.ToString)
-            Assert.AreEqual(Convert.ToInt32(eingaben(3)), 5)
+            Dim Fout() As Integer = ConsoleMaster.printErg(0)
+            Assert.AreEqual(Fout(0), 5)
         End Sub
 
         <Test>
@@ -64,11 +58,8 @@ Namespace TestProject1
             Master.Master()
             Dim ConsoleMaster As New MasterMind.ConsoleMaster(Master)
             ConsoleMaster.arr = Master.zahl
-            Dim Writer As IO.StringWriter = New IO.StringWriter
-            Console.SetOut(Writer)
-            ConsoleMaster.printErg(0)
-            Dim eingaben() = Split(Writer.ToString)
-            Assert.AreEqual(Convert.ToInt32(eingaben(7)), 0)
+            Dim Fout() As Integer = ConsoleMaster.printErg(0)
+            Assert.AreEqual(Fout(1), 0)
         End Sub
 
 
