@@ -14,13 +14,14 @@
     ''' <summary>
     ''' Schreibt die Code-Zahlen auf den Bildschirm
     ''' </summary>
-    Sub cheat()
-        Console.Write("Lösung: ")
+    Function cheat() As String
+        Dim result As String = ""
+        result += "Lösung: "
         For Each i In m.zahl
-            Console.Write("{0} ", i)
+            result += " " + Convert.ToString(i)
         Next
-        Console.WriteLine()
-    End Sub
+        Return result
+    End Function
 
     ''' <summary>
     ''' Eine komplette Benutzereingabes
@@ -105,7 +106,7 @@
             'falls j um 5 erhöht wurde vom Ursprungswert
             If j = k + 5 Then
                 'Füge einen Zeilenumbruch zum result hinzu
-                result += vbCrLf
+                'result += vbCrLf
                 'und gebe result zurück
                 Return result
             End If

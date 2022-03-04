@@ -22,7 +22,7 @@ Module Program
                 'Check if an error occured during the last input
                 If Not err Then
                     bisherigeEingabe += "-----" + vbCrLf
-                    bisherigeEingabe += ConsoleMaster.printZeile(counter - 1)
+                    bisherigeEingabe += ConsoleMaster.printZeile(counter - 1) + " - "
                     Dim Erg As Integer() = ConsoleMaster.printErg(counter - 1)
                     bisherigeEingabe += "Schwarze Stifte: " + Convert.ToString(Erg(0)) + "  Weiﬂe Stifte: " + Convert.ToString(Erg(1)) + vbCrLf
                     bisherigeEingabe += "-----" + vbCrLf

@@ -15,6 +15,7 @@
         'Clear console and show game rules
         LabelLastGuess.Text = ""
         Master.Master()
+        'MessageBox.Show(ConsoleMaster.cheat())
     End Sub
 
     Public Sub Game()
@@ -25,18 +26,21 @@
             Exit Sub
         Else
             err = False
+            'Increase the counter by 1 every guess
             counter += 1
+            If counter Mod 50 = 0 Then
+                bisherigeEingabe = ""
+            End If
         End If
         'ConsoleMaster.cheat()
         'Do not try to print recent guesses if there are none
         'Check if an error occured during the last input
         If Not err Then
-            bisherigeEingabe += "-----" + vbCrLf
-            bisherigeEingabe += ConsoleMaster.printZeile(counter - 1)
+            'bisherigeEingabe += "-----" + vbCrLf
+            bisherigeEingabe += ConsoleMaster.printZeile(counter - 1) + " - "
             Dim Erg As Integer() = ConsoleMaster.printErg(counter - 1)
             bisherigeEingabe += "Schwarze Stifte: " + Convert.ToString(Erg(0)) + "  Weiße Stifte: " + Convert.ToString(Erg(1)) + vbCrLf
-            bisherigeEingabe += "-----" + vbCrLf
-            'Increase the counter by 1 every guess
+
         End If
         'Write the recent guesses to the TextBox
         LabelLastGuess.Text = bisherigeEingabe
@@ -68,7 +72,18 @@
     End Function
 
     Sub endGame(counter As Integer)
-        MessageBox.Show("Du hast gewonnen! Gebrauchte Versuche: " + Convert.ToString(counter))
+        LabelLastGuess.Visibility = Visibility.Collapsed
+        LabelRules.Visibility = Visibility.Collapsed
+        TextBox1.Visibility = Visibility.Collapsed
+        TextBox2.Visibility = Visibility.Collapsed
+        TextBox3.Visibility = Visibility.Collapsed
+        TextBox4.Visibility = Visibility.Collapsed
+        TextBox5.Visibility = Visibility.Collapsed
+        ButtonSubmit.Visibility = Visibility.Collapsed
+        LabelRules.FontSize = 72
+        LabelRules.Text = "Du hast gewonnen! Gebrauchte Versuche: " + Convert.ToString(counter) + vbCrLf + "Die Kombination war: " + ConsoleMaster.printZeile(counter - 1)
+        LabelRules.Foreground = Brushes.Green
+        LabelRules.Visibility = Visibility.Visible
     End Sub
 
     Sub ButtonSubmit_Click(sender As Object, e As RoutedEventArgs) Handles ButtonSubmit.Click
